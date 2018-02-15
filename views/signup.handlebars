@@ -1,0 +1,45 @@
+{{> title}}
+
+<form action="/signup" method="post">
+	<div id="authNav">
+		<a href="/login">Log In</a>
+		<a id="active" href="/">Sign Up</a>
+	</div>
+	<h1>Sign up</h1>
+	{{#if hasErrors}}
+		<div id="errors" class="alert alert-danger">
+			<strong>Authentication Error: </strong>{{message}}
+		</div>
+	{{/if}}
+	<strong>Type of User</strong>
+	<select id="userType" class="custom-select" name="userType" placeholder="UserType">
+	  	<option value="Admin">Administrative</option>
+	  	<option value="Student">Student</option>
+	</select>
+	<div class="form-group">
+	    <input type="text" class="form-control" name="email" id="email" placeholder="Enter Email here">
+	</div>
+	<div class="form-group">
+	    <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password here">
+	</div>
+	<div class="form-group">
+	    <input type="hidden" class="form-control" name="accessKey" id="accessKey" placeholder="Enter Access Key here so that your information is secure - Your administrator will use this key to access your information">
+	</div>
+	<div class="form-group">
+	    <input type="text" class="form-control" name="firstname" id="firstName" placeholder="Enter First Name here">
+	    <input type="text" class="form-control" name="lastname" id="LastName" placeholder="Enter Last Name here">
+	</div>
+	<div id="studentInfo" class="form-group">
+	    <input class="form-control" name="age" id="age" placeholder="Enter Age here" type="number" name="age" min="1" max="18" step="1">
+	    <input class="form-control" name="grade" id="grade" placeholder="Enter Grade here (0 = pre-1st)" type="text" name="grade">
+		<select class="custom-select" name="gender" placeholder="Gender">
+		  	<option value="Male">Male</option>
+		  	<option value="Female">Female</option>
+		</select>    
+	</div>
+	<div id="aboutSection" class="form-group">
+	    <textarea type="text" maxlength="250" class="form-control" name="about" id="about" placeholder="Tell us a little bit about yourself"></textarea>
+	    <div class="textCounter"></div>
+	</div>
+	<button id="sendCreds">Sign Up</button>
+</form>

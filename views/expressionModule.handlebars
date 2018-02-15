@@ -1,0 +1,21 @@
+{{>navbar}}
+
+<div class="container" id="console">
+  <h1>Expression Matching Game</h1>
+  {{#unless noMoreQuestions}}
+    <p>Answer as many questions as you'd like, {{firstName}}. Pick up where you left off next time!</p>
+  {{/unless}}
+  <h3 id="msg" style="color:{{msgColor}};">{{Msg}}</h2>
+  
+  {{#unless noMoreQuestions}}
+    <div id="content">
+      <h3 id="question" value="{{qID}}">#{{qNum}}: Match the expression to the picture!</h3>
+      <img id="qImage" src="https://expression-matching.s3.amazonaws.com/{{imageSource}}">
+      <div id="choices">
+        {{#each choices}} <div class="choiceContainer"><input type='radio' class='choice' name="choices" value='{{this}}'> {{this}}</div> {{/each}}
+      </div>
+      <p><button id="submit">Submit Answer</button></p>
+    </div>
+  {{/unless}}
+
+</div>

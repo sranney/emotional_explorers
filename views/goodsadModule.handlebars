@@ -1,0 +1,25 @@
+{{>navbar}}
+
+<div class="container" id="console">
+  <h1>Good Sad Prompts</h1>
+  {{#unless noMoreQuestions}}
+    <p>Answer as many prompts as you'd like, {{firstName}}. Pick up where you left off next time!</p>
+  {{/unless}}
+  <h3 id="msg" style="color:{{msgColor}};">{{Msg}}</h2>
+  
+  {{#unless noMoreQuestions}}
+    <div id="content">
+      <h3 id="questionPrompt" value="{{qID}}">#{{qNum}}: {{promptText}}</h3>
+      <div id="choice-Good-Sad">
+        <button class="btn btn-block" id="good" value="good">Good</button>
+        <button class="btn btn-block" id="sad" value="sad">Sad</button>
+      </div>
+      <div id="answerEntry" class="form-group">
+          <textarea type="text" maxlength="250" class="form-control" name="response" id="goodsadEntry" placeholder="Tell us how you feel."></textarea>
+          <div class="textCounter"></div>
+      </div>
+      <p><button id="submit">Submit Answer</button></p>
+    </div>
+  {{/unless}}
+
+</div>

@@ -1,0 +1,36 @@
+table {
+    width: 100%;
+}
+
+thead, tbody, tr, td, th { display: block; }
+
+tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+thead th {
+    height: 30px;
+}
+
+tbody {
+    height: 270px;
+    overflow-y: auto;
+}
+
+tbody td, thead th {
+	width:16%;
+    float: left;
+}
+
+@media (max-width:850px){
+	.grade,.age{
+		display:none;
+	}
+
+	.email,.view{
+		width:30%;
+	}
+}

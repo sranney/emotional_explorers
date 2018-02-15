@@ -1,0 +1,14 @@
+{
+  "name": "automationforproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "automate_student.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nightmare": "^2.10.0"
+  }
+}

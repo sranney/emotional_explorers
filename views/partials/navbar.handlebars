@@ -1,0 +1,41 @@
+<nav id="homenav">
+	{{#if homePage}}
+		<div id="greeting">
+			Welcome, {{firstname}}		
+		</div>
+	{{else if showInfo}}
+		<div class="dropdown">
+			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Student Information<span class="caret"></span></button>
+			<ul id="studentStats" class="dropdown-menu">
+				<li></li>
+				<li>Name: {{firstname}} {{lastname}}</li>
+				<li>Age: {{age}}</li>
+				<li>Grade: {{grade}}</li>
+				<li>Last Activity: {{recentActivity}}</li>
+				<li>Last Activity Time: {{recentActivityTime}}</li>
+			</ul>	
+			<button class="btn btn-primary" id="refresh">Refresh Page</button>
+			{{#unless firstStudent}}
+				<button class="btn btn-primary" id="firstStudent">First Student</button>
+				<button class="btn btn-primary" id="prevStudent"><< Previous Student</button>
+			{{/unless}}
+			{{#unless lastStudent}}
+				<button class="btn btn-primary" id="nextStudent">Next Student >></button>
+				<button class="btn btn-primary" id="lastStudent" value="{{lastindx}}">Last Student</button>
+			{{/unless}}
+		</div>
+	{{else if moduleGame}}
+	<div id="game">{{firstName}} - {{moduleGame}}</div>
+	{{/if}}
+	<div id="menuNav">
+		{{#if homePage}}
+			{{#if student}}
+				<button id="layout" class="btn btn-primary" data-toggle='modal' data-target='#myModal'>Change Layout</button>
+			{{/if}}
+		{{/if}}
+		{{#unless homePage}}
+			<a href="/home">Home</a>
+		{{/unless}}		
+		<a href="/logout">Log Out</a>
+	</div>
+</nav>

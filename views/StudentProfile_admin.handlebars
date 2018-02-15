@@ -1,0 +1,245 @@
+{{> navbar}}
+
+{{#if error}}
+	<div class="alert alert-danger">No student at this index</div>
+{{else}}
+
+	<div id="flexContainer">
+		<div id="sentenceDiv">
+			<h1 class="resultsTitle">Sentence Matching</h1>
+
+			{{#if sentences_hasAnswers}}
+				{{#if dataForTotalsTable_sentences}}
+					<table class="table table-hover text-centered totalScores">
+						<thead>
+							<tr>
+								<th class="emGroup">Emotion Group</th>
+							    <th>Emotion</th>
+							    <th>Number of Correct Answers</th>
+							    <th>Number of Questions Answered</th>
+							    <th>Accuracy of Answers</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="font-weight:bold;font-size:15px">
+								<td>All</td>
+								<td>All</td>
+								<td>{{sentence_numCorrect}}</td>
+								<td>{{sentence_totalAnswered}}</td>
+								<td>{{sentence_percCorrect}}</td>
+							</tr>					
+							{{#each dataForTotalsTable_sentences}}
+							  	<tr>
+							    	<td class="emGroup">{{this.emotGroup}}</td>
+							    	<td>{{this.emot}}</td>
+							    	<td>{{this.numCorrect}}</td>
+							    	<td>{{this.numTotal}}</td>
+							    	<td>{{this.percCorrect}}</td>
+							  	</tr>
+							{{/each}}
+						</tbody>
+					</table>				
+				{{/if}}
+
+				{{#if sentences_hasCorrectAnswers}}
+					<table class="table table-hover text-centered correctScores">
+						<thead>
+							<tr>
+								<th class="emGroup">Emotion Group</th>
+							    <th>Emotion</th>
+							    <th>Number of Correct Answers</th>
+							    <th>Study</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each sentence_correct}}
+							  	<tr>
+							    	<td class="emGroup">{{this.dataValues.emotion_group}}</td>
+							    	<td>{{this.dataValues.emotion}}</td>
+							    	<td>{{this.dataValues.NumEmotionQuestions}}</td>
+							    	<td><button class="btn btn-primary btn-block digDeeper" value="sentences-{{this.dataValues.emotion}}-correct" data-toggle='modal' data-target='#AdminQModal'>Review Q&A</button></td>
+							  	</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				{{else}}
+					<div class="alert alert-danger">No Correct Answers</div>
+				{{/if}}
+
+				{{#if sentences_hasIncorrectAnswers}}
+					<table class="table table-hover text-centered incorrectScores">
+						<thead>
+							<tr>
+								<th class="emGroup">Emotion Group</th>
+							    <th>Emotion</th>
+							    <th>Number of Incorrect Answers</th>
+							    <th>Study</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each sentence_incorrect}}
+							  	<tr>
+							    	<td class="emGroup">{{this.dataValues.emotion_group}}</td>
+							    	<td>{{this.dataValues.emotion}}</td>
+							    	<td>{{this.dataValues.NumEmotionQuestions}}</td>
+							    	<td><button class="btn btn-primary btn-block digDeeper" data-toggle='modal' data-target='#AdminQModal' value="sentences-{{this.dataValues.emotion}}-incorrect">Review Q&A</button></td>
+							  	</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				{{else}}
+					<div class="alert alert-success">No Incorrect Answers</div>
+				{{/if}}
+
+			{{else}}
+				<div class="alert alert-warning">Student has not answered any questions</div>
+			{{/if}}
+		</div>
+
+		<div id="pictureDiv">
+			<h1 class="resultsTitle">Expression Matching</h1>
+
+			{{#if picture_hasAnswers}}
+
+				{{#if dataForTotalsTable_picture}}
+
+					<table class="table table-hover text-centered totalScores">
+						<thead>
+							<tr>
+								<th class="emGroup">Emotion Group</th>
+							    <th>Emotion</th>
+							    <th>Number of Correct Answers</th>
+							    <th>Number of Questions Answered</th>
+							    <th>Accuracy of Answers</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="font-weight:bold;font-size:15px">
+								<td>All</td>
+								<td>All</td>
+								<td>{{picture_numCorrect}}</td>
+								<td>{{picture_totalAnswered}}</td>
+								<td>{{picture_percCorrect}}</td>
+							</tr>					
+							{{#each dataForTotalsTable_picture}}
+							  	<tr>
+							    	<td class="emGroup">{{this.emotGroup}}</td>
+							    	<td>{{this.emot}}</td>
+							    	<td>{{this.numCorrect}}</td>
+							    	<td>{{this.numTotal}}</td>
+							    	<td>{{this.percCorrect}}</td>
+							  	</tr>
+							{{/each}}
+						</tbody>
+					</table>				
+				{{/if}}
+
+				{{#if picture_hasCorrectAnswers}}
+					<table class="table table-hover text-centered correctScores">
+						<thead>
+							<tr>
+								<th class="emGroup">Emotion Group</th>
+							    <th>Emotion</th>
+							    <th>Number of Correct Answers</th>
+							    <th>Study</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each picture_correct}}
+							  	<tr>
+							    	<td class="emGroup">{{this.dataValues.emotion_group}}</td>
+							    	<td>{{this.dataValues.emotion}}</td>
+							    	<td>{{this.dataValues.NumEmotionQuestions}}</td>
+							    	<td><button class="btn btn-primary btn-block digDeeper" value="picture-{{this.dataValues.emotion}}-correct" data-toggle='modal' data-target='#AdminQModal'>Review Q&A</button></td>
+							  	</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				{{else}}
+					<div class="alert alert-danger">No Correct Answers</div>
+				{{/if}}
+
+				{{#if picture_hasIncorrectAnswers}}
+					<table class="table table-hover text-centered incorrectScores">
+						<thead>
+							<tr>
+								<th class="emGroup">Emotion Group</th>
+							    <th>Emotion</th>
+							    <th>Number of Incorrect Answers</th>
+							    <th>Study</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each picture_incorrect}}
+							  	<tr>
+							    	<td class="emGroup">{{this.dataValues.emotion_group}}</td>
+							    	<td>{{this.dataValues.emotion}}</td>
+							    	<td>{{this.dataValues.NumEmotionQuestions}}</td>
+							    	<td><button class="btn btn-primary btn-block digDeeper" value="picture-{{this.dataValues.emotion}}-incorrect" data-toggle='modal' data-target='#AdminQModal'>Review Q&A</button></td>
+							  	</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				{{else}}
+					<div class="alert alert-success">No Incorrect Answers</div>
+				{{/if}}
+
+			{{else}}
+				<div class="alert alert-warning">Student has not answered any questions</div>
+			{{/if}}
+		</div>
+
+		<div id="gsDiv">
+			<h1 class="resultsTitle">Good/Sad Prompts</h1>
+
+			{{#if gs_hasAnswers}}
+
+				<table class="table table-hover text-centered summary"
+
+				<table class="table table-hover text-centered totalScores">
+					<thead>
+						<tr>
+							<th class="emGroup">Good/Sad</th>
+						    <th>Topic</th>
+						    <th>Number of Prompts Answered for Topic</th>
+						    <th>Answers</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each results_gs}}
+						  	<tr>
+						    	<td class="emGroup">{{this.goodSad}}</td>
+						    	<td>{{this.topic}}</td>
+						    	<td>{{this.NumTopicQuestions}}</td>
+						    	<td><button class="btn btn-primary btn-block digDeeper" value="gs-{{this.topic}}-{{this.goodSad}}" data-toggle='modal' data-target='#AdminQModal'>Review Q&A</button></td>
+						  	</tr>
+						{{/each}}
+					</tbody>
+				</table>
+
+			{{else}}
+				<div class="alert alert-warning">Student has not answered any questions</div>
+			{{/if}}
+		</div>
+
+	</div>
+
+	<div id="AdminQModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	      			<p id="instrQ">Here are the questions that were answered for this emotion category</p>
+	      		</div>
+	      		<div class="modal-body">
+		      		<div>H</div>
+		      	</div>
+		      	<div class="modal-footer">
+			        <button id="adminBtn" type="button" class="btn btn_close" data-dismiss="modal">Close</button>
+		      	</div>
+		    </div>
+
+		</div>
+	</div>	
+
+{{/if}}

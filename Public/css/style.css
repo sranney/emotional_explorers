@@ -1,0 +1,581 @@
+body{
+	background-color:#003056;
+}
+
+form{
+	background-color:#FFFFFF;
+	width:80%;
+	margin:0 auto;
+	box-shadow:0 0 15px black;
+	padding:20px;
+	border-radius:20px;
+	margin-top: 40px;
+}
+
+#authNav{
+	display:flex;
+	justify-content:space-around;	
+	align-items:center;
+}
+
+.form-group{
+	display:flex;
+	justify-content:space-around;
+}
+
+.form-check{
+	width:33%;
+	margin-left:5%;
+	align-self:center;
+	justify-content:space-around;
+}
+
+.form-control{
+	margin-left:5px;
+}
+
+#active{
+	background-color:#eee;
+	padding:15px;
+	border-radius:5px;
+}
+
+h1{
+	margin-top:10px;
+	margin-bottom:20px;
+}
+
+#sendCreds{
+	width:100%;
+	font-size:20px;
+	color:white;
+	border:5px solid black;
+	border-radius:15px;
+    background: linear-gradient(to right, #2FA4DA 50%, #239AA3 50%);
+	background-size: 200% 100%;		
+	background-position:right bottom;
+	transition:all 2s ease;
+}
+
+#sendCreds:hover{
+	background-position:left bottom;
+}
+
+#menu{
+	display:flex;
+	justify-content:space-around;
+	margin-top:3.2%;
+}
+
+#menu a{
+	background-color:#E5E5E5;
+	opacity:.9;
+	font-size:30px;
+	padding:50px;
+	border-radius:15px;
+	box-shadow:inset 0px 0px 10px black;
+	transition:all .3s ease;
+}
+
+#menu a:hover{
+	opacity:1;
+	text-decoration:none;
+	transform:scale(1.1);
+	box-shadow:inset 0px 0px 10px black, 0px 0px 10px black;
+}
+
+#menu a:nth-child(1):hover{
+	background-color:red;
+	color:white;
+}
+
+#menu a:nth-child(2):hover{
+	background-color:green;
+	color:white;
+}
+
+#menu a:nth-child(3):hover{
+	background-color:blue;
+	color:white;
+}
+
+#homenav{
+	background-color:#90a8d7;
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	font-size:15px;
+	color:white;
+}
+
+#homenav a{
+	font-size:15px;
+	color:white;	
+	margin:5px;	
+}
+
+#homenav div{
+	margin:1%;
+}
+
+#title{
+	width:25%;
+}
+
+#homepic{
+	box-shadow:0px 0px 10px black;
+	border:2px solid white;
+	width:18%;
+	border-radius:15px;
+}
+
+select{
+	padding:5px;
+	border-radius:5px;
+}
+
+#studentInfo,#about{
+	display:none;
+}
+
+#adminInput{
+	display:flex;
+	justify-content:space-around;
+	padding:15px;
+}
+
+#currentStudents,
+#currentStudentsList,
+#searchTitle{
+	text-align:center;
+}
+
+#admin_studentEmail,#admin_studentAccessKey{
+	padding:10px;
+	width:40%;
+	border:5px solid black;
+	border-radius:15px;
+}
+
+#searchBtn{
+	background-color:#2FA4DA;
+	color:white;
+}
+
+#errors,#success{
+	margin-top:5px;
+	border-radius:5px;
+	text-align:center;
+}
+
+.container{
+	width:75%;
+}
+
+#currentStudents,#addQ{
+	width:80%;
+	margin:25px auto;
+	font-size:38px;
+	font-family: 'Raleway', sans-serif;
+}
+
+.table {
+    border-radius: 5px;
+	margin: auto;
+    float: none;
+	max-height:300px;
+	overflow:scroll;    
+}
+
+.modal-dialog{
+	width:90%;
+}
+
+#studentStats{
+	list-style:none;
+	background-color:#286090;
+	padding:20px;
+	width:max-content;
+}
+
+#flexContainer{
+	display:flex;
+	justify-content:space-around;
+}
+
+#sentenceDiv,#pictureDiv,#gsDiv{
+	margin-top:20px;
+	margin-left:20px;
+	margin-right:20px;
+	border-radius:15px;
+	border:3px solid black;
+	padding:5px;
+}
+
+.resultsTitle{
+	color:white;
+}
+
+@media (max-width:850px){
+	.emGroup{
+		display:none;
+	}
+	.resultsTitle{
+		font-size:25px;
+	}
+	#flexContainer{
+		display:block;
+	}
+	#menu a{
+		font-size:20px;
+	}
+}
+
+.correctScores,.incorrectScores,.totalScores,.summary{
+	margin-top:10px;
+	font-size:12px;
+}
+
+.correctScores>thead{
+	background-color:#003600;
+	color:#DFDFDF;
+}
+
+.correctScores>tbody{
+	color:#003600;
+	background-color:#DFDFDF;
+}
+
+.correctScores > tbody > tr > td > button{
+	background-color:#003600;
+	color:#DFDFDF;	
+}
+
+.correctScores > tbody > tr > td > button:hover{
+	background-color:white;
+	color:#003600;	
+}
+
+.incorrectScores>thead{
+	background-color:#750000;
+	color:#DFDFDF;
+}
+
+.incorrectScores>tbody{
+	color:#750000;
+	background-color:#DFDFDF;
+}
+
+.incorrectScores > tbody > tr > td > button{
+	background-color:#750000;
+	color:#DFDFDF;	
+}
+
+.incorrectScores > tbody > tr > td > button:hover{
+	background-color:white;
+	color:#750000;	
+}
+
+.totalScores>thead,.summary{
+	background-color:#337ab7;
+	color:#DFDFDF;
+}
+
+.totalScores>tbody,.summary>tbody{
+	color:#337ab7;
+	background-color:#DFDFDF;
+}
+
+.correctScores > thead > tr > th, .incorrectScores > thead > tr > th, .totalScores > thead > tr > th, .summary > thead > tr > th,
+.correctScores > tbody > tr > td, .incorrectScores > tbody > tr > td, .totalScores > tbody > tr > td, .summary > tbody > tr > td{
+	text-align:center;
+}
+
+.choiceContainer{
+	background-color:white;
+	margin:10px 20px;
+	padding:10px 30px;
+	font-size:20px;
+	border-radius:15px;
+	transform:scale(1);
+	transition:all .3s ease;
+	border:1px dashed black;
+	width:25%;
+}
+.choiceContainer:hover{
+	transform:scale(1.05);
+}
+.choiceContainer.animate{
+	color:white;
+	transform:scale(1.1);
+	background-color:green;
+	border:2px solid black;
+	box-shadow: 0px 0px 15px black;
+}
+
+#submit{
+	margin:10px 20px;
+	padding:10px 30px;
+	border-radius:15px;
+	font-size:20px;
+	background-color:#2FA4DA;
+	border:0px;
+	transition:all .3s ease;
+	width:25%;
+}
+
+#submit:hover{
+	box-shadow:0px 0px 15px black;
+	transform:scale(1.1);
+}
+
+#console{
+	background-color:rgba(229,229,229,.75);
+	padding:30px;
+	border-radius:15px;
+	box-shadow:inset 0px 0px 10px black,0px 0px 10px black;
+	margin-top:5%;
+}
+
+.backgroundPic,.profilePic{
+	max-width:100%;
+}
+
+.table#BackgroundList,.table#PictureList{
+	max-height:350px;
+}
+
+.modal-body.background{
+	display:block;
+}
+
+.modal-body.picture{
+	display:none;
+}
+
+#BackgroundList>thead>tr>th,#BackgroundList>tbody>tr>td,
+#PictureList>thead>tr>th,#PictureList>tbody>tr>td{
+	width:30%;
+}
+
+#BackgroundList>thead>tr,#BackgroundList>tbody>tr,
+#PictureList>thead>tr,#PictureList>tbody>tr{
+	width:100%;
+	display:flex;
+	justify-content:center;
+}
+
+
+
+#changeLayout{
+	margin-left:15px;
+	display:none;
+	float:left;
+	background-color:#2FA4DA;
+	color:white;
+}
+
+#descrBox{
+	float:left;
+}
+
+#closeBtn{
+	float:right;
+}
+
+#descrPic{
+	display:none;
+}
+
+#sentencesQNav,#goodSadQNav{
+	width:100%;
+	padding:10px;
+	box-shadow: inset 0px 0px 10px black, 0px 0px 15px black;
+	text-align:center;
+	border-radius:15px;
+	color:black;
+	font-size:30px;
+	transition:all 0.7s ease;
+	
+}
+
+#sentencesQNav:hover{
+	transform:scale(1.02);
+	background-color:blue;
+	color:white;
+}
+
+#goodSadQNav:hover{
+	transform:scale(1.02);
+	background-color:green;
+	color:white;
+}
+
+#sentenceQForm,#GoodSadQForm{
+	display:none;
+}
+
+#sentenceQInput,#sentencecorrAnsInput,#sentenceincorrAns1Input,#sentenceincorrAns2Input,#gsQInput,#gsTopicInput{
+	border-radius:10px;
+	border:3px solid black;
+	padding:10px;
+	width:100%;
+	font-size:20px;
+	transition:all 0.3 ease;
+}
+
+#sentenceQInput:focus,#gsQInput:focus{
+	transform:scale(1.02);
+	background-color:#99BBEE;
+	color:white;
+	border-color:blue;
+	outline:none;
+}
+
+#sentencecorrAnsInput:focus,#gsTopicInput:focus{
+	transform:scale(1.02);
+	background-color:#024034;
+	color:white;
+	border-color:#007024;
+	outline:none;
+}
+
+#sentenceincorrAns1Input:focus,#sentenceincorrAns2Input:focus{
+	transform:scale(1.02);
+	background-color:#C30000;
+	color:white;
+	border-color:#850000;
+	outline:none;
+}
+
+#sentenceSubmitQ,#gsSubmitQ{
+	font-size:30px;
+	outline:none;
+}
+
+#sentenceQInput:focus::placeholder,
+#sentencecorrAnsInput:focus::placeholder,
+#sentenceincorrAns1Input:focus::placeholder,
+#sentenceincorrAns2Input:focus::placeholder,
+#gsQInput:focus::placeholder,#gsTopicInput:focus::placeholder
+{
+	color:white
+}
+
+#switchToGS,#switchToSent{
+	font-size:30px;
+	padding:8px;
+	width:max-content;
+	border:0px solid #5CB9D2;
+	transition:0.3s all ease;
+}
+
+#switchToGS:hover,#switchToSent:hover{
+	border:10px solid #5CB9D2;
+	border-radius:15px;
+}
+
+#qImage{
+	width:40%;
+	border-radius:20px;
+	border:4px solid #2F2318;
+}
+
+#aboutSection{
+	display:block;
+}
+
+.dropdown{
+	display:flex;
+}
+
+.dropdown button{
+	margin-left:15px;
+}
+
+#textcounter{
+	margin-left:15px;
+}
+
+.resultBlock{
+	padding:20px;
+	border-radius:15px;
+	background-color:#DCBBA4;
+	margin:20px;
+}
+#AdminQModal > div > div > div.modal-header,#AdminQModal > div > div > div.modal-footer{
+	background-color:#85654B;
+	color:#DCBBA4;
+	font-weight:bold;
+	border:none;
+}
+
+#AdminQModal > div > div > div.modal-body{
+	background-color:#281C00;
+	max-height:200px;
+	overflow-y: scroll;
+	border:none;
+}
+
+#AdminQModal > div > div > div.modal-body::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #281C00;
+}
+
+#AdminQModal > div > div > div.modal-body::-webkit-scrollbar
+{
+	width: 15px;
+	background-color: #281C00;
+}
+
+#AdminQModal > div > div > div.modal-body::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #DCBBA4;
+}
+
+#adminBtn{
+	background-color:#281C00;
+}
+
+#adminBtn:hover{
+	color:#DCBBA4;
+}
+
+#choice-Good-Sad>button{
+    background: linear-gradient(to right, #2FA4DA 50%, #239AA3 50%);
+	background-size: 200% 100%;		
+	background-position:right bottom;
+	transition:all 2s ease;
+	font-size:20px;
+	color:white;
+}
+
+#choice-Good-Sad>button.slideAnimate{
+	background-position:left bottom;
+	border:4px solid white;
+	transform:scale(1.03);
+}
+
+
+#content>#answerEntry{
+	margin-top:20px;
+	display:block;
+}
+
+#content>#answerEntry>textarea{
+	font-size:20px;
+}
+
+#content>#answerEntry > div{
+	background-color:#fff;
+	width:max-content;
+	margin-left:10px;
+}
+
+.resultBlock>.digQ>img{
+	width:35%;
+}

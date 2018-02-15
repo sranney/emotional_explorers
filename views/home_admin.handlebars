@@ -1,0 +1,135 @@
+{{> navbar}}
+{{> title}}
+
+<form id="searchForm" action="/search" method="post">
+	<input type="hidden" name="firstname" value="{{firstname}}">
+	<input type="hidden" name="email" value="{{email}}">
+	<h2 id="searchTitle">Search for Students</h2>
+	<div id="adminInput">
+		<input type="text" name="email" id="admin_studentEmail" placeholder="enter email for student">
+		<input type="text" name="accessKey" id="admin_studentAccessKey" placeholder="enter accessKey for student">
+	</div>
+	<button id="searchBtn" class="btn btn-block">Search</button>
+
+	{{#if error}}
+		<div id="errors" class="alert alert-danger">
+			<strong>Error: </strong>{{error}}
+		</div>	
+	{{/if}}
+
+	{{#if success}}
+		<div id="success" class="alert alert-success">
+			{{success}}
+		</div>	
+	{{/if}}
+</form>
+
+<button id="currentStudents" class="btn btn-primary btn-block" data-toggle='modal' data-target='#myModal'>Click Here to View Currently Observed Students</button>
+{{#if validAdmin}}
+	<button id="addQ" class="btn btn-primary btn-block" data-toggle='modal' data-target='#myQModal'>Click Here to Add Questions</button>
+{{/if}}
+
+<div class="container">
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+    	<div class="modal-content">
+      		<div class="modal-header">
+      			<p>You are currently observing {{numStudents}} students</p>
+      		</div>
+      		<div class="modal-body">
+				<table id="currentStudentList" class="table table-hover text-centered" state="hidden">
+					<thead>
+						<tr>
+							<th>First Name</th>
+						    <th>Last Name</th>
+						    <th class="email">Email</th>
+						    <th class="grade">Grade</th>
+						    <th class="age">Age</th>
+						    <th class="study">Study</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each students}}
+						  	<tr>
+						    	<td>{{this.firstname}}</td>
+						    	<td>{{this.lastname}}</td>
+						    	<td class="email">{{this.email}}</td>
+						    	<td class="grade">{{this.grade}}</td>
+						    	<td class="age">{{this.age}}</td>
+						    	<td class="view"><button class="viewStats btn btn-primary btn-block" value="{{this.id}}">View Stats</button></td>
+						  	</tr>
+						{{/each}}
+					</tbody>
+				</table>
+	      	</div>
+	      	<div class="modal-footer">
+		        <button type="button" class="btn btn_close" data-dismiss="modal">Close</button>
+	      	</div>
+	    </div>
+
+	</div>
+</div>
+
+<div id="myQModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+    	<div class="modal-content">
+      		<div class="modal-header">
+      			<p id="instrQ">Select Category that you want to add questions to</p>
+      		</div>
+      		<div class="modal-body">
+				<div id="modMenu">
+					<p id="sentencesQNav">Sentence Matching</p>
+					<p id="goodSadQNav">Good/Sad Matching</p>
+				</div>
+	      		<form id="sentenceQForm">
+	      			<div class="addQmenu">
+	      				<p id="switchToGS">Switch to Good/Sad Add Question Form</p>
+	      			</div>
+	      			<div id="sentenceQContainer">
+	      				<textArea id="sentenceQInput" name="question" placeholder="Question:"></textArea>
+	      				<div class="textCounter"></div>
+	      			</div>
+	      			<div id="emotionGroup">
+	       				Choose Correct Emotion Group:
+						<select id="sentenceEmotionGroupSelect">
+							<option value="positive">Positive</option>
+							<option value="neutral">Neutral</option>
+							<option value="negative">Negative</option>
+						</select>
+	      			</div>
+	      			<div id="corrAnsContainer">
+	      				<input id="sentencecorrAnsInput" name="corrAns" type="text" placeholder="Correct Answer:">
+	      			</div>
+	      			<div class="incorrAnsContainer">
+	      				<input id="sentenceincorrAns1Input" name="incorrAns1" type="text" placeholder="Incorrect Answer #1:">
+	      			</div>
+	      			<div class="incorrAnsContainer">
+	      				<input id="sentenceincorrAns2Input" name="incorrAns2" type="text" placeholder="Incorrect Answer #2:">
+	      			</div>
+	      			<button type="button" id="sentenceSubmitQ" class="btn btn-primary btn-block">Submit Question</button>
+	      		</form>
+	      		<form id="GoodSadQForm">
+	      			<div class="addQmenu">
+	      				<p id="switchToSent">Switch to Sentence Add Question Form</p>
+	      			</div>
+	      			<div id="gsQContainer">
+	      				<textArea id="gsQInput" name="question" type="text" placeholder="Question:"></textArea>
+	      				<div class="textCounter"></div>
+	      			</div>
+	      			<div id="topicContainer">
+	      				<input id="gsTopicInput" name="topic" type="text" placeholder="Topic:">
+	      			</div>	      			
+	      			<button type="button" id="gsSubmitQ" class="btn btn-primary btn-block">Submit Question</button>
+	      		</form>
+	      	</div>
+	      	<div class="modal-footer">
+		        <button type="button" class="btn btn_close" data-dismiss="modal">Close</button>
+	      	</div>
+	    </div>
+
+	</div>
+</div>

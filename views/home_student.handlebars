@@ -1,0 +1,78 @@
+{{> navbar}}
+
+{{> title}}
+
+<img id="homepic" class="img-responsive center-block" src="https://expression-matching.s3.amazonaws.com/{{chosenPicture}}">
+
+<div id = "menu">
+	<a href="/expressions">Expression Match</a>
+	<a href="/goodSad">Good Sad</a>
+	<a href="/sentences">Sentence Matching</a>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+    	<div class="modal-content">
+      		<div class="modal-header">
+      			<button id="backgroundBtn" class="btn btn-primary">Change Background</button>
+      			<button id="pictureBtn" class="btn btn-primary">Change Picture</button>
+      		</div>
+      		<div class="modal-body background">
+				<table id="BackgroundList" class="table table-hover text-centered" state="hidden">
+					<thead>
+						<tr>
+							<th>Choose Picture by Clicking on it</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><img class="backgroundPic" src="https://expression-matching.s3.amazonaws.com/space.jpg" value="space"></td>
+						</tr>
+						<tr>
+							<td><img class="backgroundPic" src="https://expression-matching.s3.amazonaws.com/jungle.jpeg" value="jungle"></td>
+						</tr>
+						<tr>
+							<td><img class="backgroundPic" src="https://expression-matching.s3.amazonaws.com/pirate.png" value="pirate"></td>
+						</tr>
+						<tr>
+							<td><img class="backgroundPic" src="https://expression-matching.s3.amazonaws.com/science.jpg" value="science"></td>
+						</tr>
+					</tbody>
+				</table>
+	      	</div>
+	      	<div class="modal-body picture">
+				<table id="PictureList" class="table table-hover text-centered" state="hidden">
+					<thead>
+						<tr>
+							<th>Choose Picture by Clicking on it</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><img class="profilePic" src="https://expression-matching.s3.amazonaws.com/dog.jpg" value="dog"></td>
+						</tr>
+						<tr>
+							<td><img class="profilePic" src="https://expression-matching.s3.amazonaws.com/cat.jpg" value="cat"></td>
+						</tr>
+						<tr>
+							<td><img class="profilePic" src="https://expression-matching.s3.amazonaws.com/bird.jpg" value="bird"></td>
+						</tr>
+						<tr>
+							<td><img class="profilePic" src="https://expression-matching.s3.amazonaws.com/fish.jpg" value="fish"></td>
+						</tr>
+					</tbody>
+				</table>				
+	      	</div>
+	      	<div class="modal-footer layout">
+		        <div id="descrBox">
+		        	<p id="descrBG">Your current background is {{BGPicName}}.</p>
+		        	<p id="descrPic">Your current picture is {{PicName}}.</p>
+		        </div>
+		        <button id="changeLayout" type="button" class="btn btn-primary">Change Layout</button>
+		        <button id="closeBtn" type="button" class="btn btn_close" data-dismiss="modal">Close</button>
+	      	</div>
+	    </div>
+
+	</div>
+</div>

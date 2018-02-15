@@ -1,0 +1,70 @@
+module.exports = function(sequelize,Sequelize){
+	var Student = sequelize.define("student",{
+		firstname:{
+			type:Sequelize.STRING,
+			allowNull:false
+		},
+		lastname:{
+			type:Sequelize.STRING,
+			allowNull:false
+		},
+		about:{
+			type:Sequelize.TEXT,
+			validate:{
+				isLength: [1, 250]
+			}
+		},
+		age:{
+			type:Sequelize.INTEGER,
+			allowNull:false,
+			validate:{
+				isInt:true,
+				min:0,
+				max:18
+			}
+		},
+		grade:{
+			type:Sequelize.STRING,
+			allowNull:false,
+			validate:{
+				isInt:true,
+				min:0,
+				max:12
+			}			
+		},
+		gender:{
+			type:Sequelize.STRING
+		},				
+		email:{
+			type:Sequelize.STRING,
+			unique:true
+		},
+		last_login:{
+			type: Sequelize.DATE, defaultValue: Sequelize.NOW
+		},
+		status:{
+			type:Sequelize.ENUM("active","inactive"),
+			defaultValue:"active"
+		},
+		adminConn:{
+			type:Sequelize.STRING
+		},
+		accessKey:{
+			type:Sequelize.STRING,
+			allowNull:false
+		},
+		chosenBackground:{
+			type:Sequelize.STRING,
+			defaultValue:"space.jpg"
+		},
+		chosenPicture:{
+			type:Sequelize.STRING,
+			defaultValue:"dog.jpg"
+		},
+		mostRecentActivity:{
+			type:Sequelize.STRING
+		}
+	});
+
+	return Student;
+}
