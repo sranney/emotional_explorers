@@ -1,3 +1,4 @@
+//for changing the userform for signing up for a student versus an admin
 $("#userType").on("change",function(){
 	if($(this).val()=="Student"){
 		$("#accessKey").attr("type","text");
@@ -11,29 +12,37 @@ $("#userType").on("change",function(){
 	}
 })
 
+//for clicking the button to show current students
 $("#currentStudents").on("click",function(){
+	//show the modal to show students
 	$("#myModal").show();
 });
 
+//for clicking the button to add questions
 $("#addQ").on("click",function(){
+	//show the modal to show questions
 	$("#myQModal").show();
 });
 
-
+//for clicking on button that will navigate to looking at individual students result statistics
 $(".viewStats").on("click",function(){
 	window.location = "/studentProfile-"+$(this).val();
 });
 
 var currentLoc = window.location;
 
+//for admin clicking on dig deeper buttons on the individual student statistics buttons labeled dig deeper
+
 $(".digDeeper").on("click",function(){
 	var EmotPath = $(this).val();
+	//for getting data that is based on an individual student's answers for a certain emotion and module
 	$.ajax({
 		url:currentLoc+"/"+EmotPath,
 		method:"get"
 	}).done(function(result){
-		console.log(result);
+		//result will include the type of module 		
 		var modalHTML="";
+		//if the type of module is sentence then add html to the modal to format and show the answers for the sentence modal
 		if(result[0].type=="sentence"){
 			$("#AdminQModal > div > div > div.modal-body").css("max-height","200px");
 			for (var i = 0 ; i < result.length; i++){	
@@ -46,6 +55,7 @@ $(".digDeeper").on("click",function(){
 				modalHTML+="</div>";
 			}
 		} else if(result[0].type=="picture"){
+			//if the type of module is expression then add html to the modal to format and show the answers for the expression modal
 			$("#AdminQModal > div > div > div.modal-body").css("max-height","400px");			
 			for (var i = 0 ; i < result.length; i++){	
 				modalHTML+="<div class='resultBlock'>";
@@ -57,6 +67,7 @@ $(".digDeeper").on("click",function(){
 				modalHTML+="</div>";
 			}			
 		} else if(result[0].type=="gs"){
+			//if the type of module is goodsad then add html to the modal to format and show the answers for the goodsad modal
 			$("#AdminQModal > div > div > div.modal-body").css("max-height","200px");
 			for (var i = 0 ; i < result.length; i++){	
 				modalHTML+="<div class='resultBlock'>";
@@ -67,27 +78,33 @@ $(".digDeeper").on("click",function(){
 				modalHTML+="</div>";
 			}			
 		}
-
+		//put the modal html that was created above into the modal
 		$("#AdminQModal > div > div > div.modal-body").html(modalHTML);
 	});
 });
 
+//for when the student clicks the layout button, show the student's modal for them to be able to change their background and their picture
 $("#layout").on("click",function(){
 	$("#myModal").show();
 })
 
+//for displaying the current background of the student's profile
 var currBGPic = $("#descrBG").text().replace("Your current background is ","");
 currBGPic = currBGPic.substr(0,currBGPic.indexOf("."));
+//for displaying the current picture of the student's profile
 var currPic = $("#descrPic").text().replace("Your current picture is ","");
 currPic = currPic.substr(0,currPic.indexOf("."));
+//for displaying chosen pic and chosen background pic when a student clicks on a differnet picture
 var chosenBGPic="",chosenPic="";
 
+//for switching between viewing background picture menu and profile picture
 $("#backgroundBtn").on("click",function(){
 	$(".modal-body.background").css("display","block");
 	$(".modal-body.picture").css("display","none");
 	$("#descrBG").css("display","block");
 	$("#descrPic").css("display","none");
 });
+//for switching between viewing background picture menu and profile picture
 $("#pictureBtn").on("click",function(){
 	$(".modal-body.picture").css("display","block");
 	$(".modal-body.background").css("display","none");
@@ -95,6 +112,7 @@ $("#pictureBtn").on("click",function(){
 	$("#descrPic").css("display","block");
 });
 
+//for styling a background picture that is clicked and adding text to show the chosen picture.
 $(".backgroundPic").on("click",function(){
 	$(".backgroundPic").css("border","none");
 	$(this).css("border","5px solid #0AC2FF");
@@ -120,6 +138,7 @@ $(".backgroundPic").on("click",function(){
 	}
 });
 
+//for styling a picture that is clicked and adding text to show the chosen picture.
 $(".profilePic").on("click",function(){
 	$(".profilePic").css("border","none");
 	$(this).css("border","5px solid #0AC2FF");
@@ -145,6 +164,7 @@ $(".profilePic").on("click",function(){
 	}
 });
 
+//for finalizing the change layout, onclick on the submit button that will send this information to the server
 $("#changeLayout").on("click",function(){
 	if(chosenBGPic.length==0){
 		chosenBGPic = currBGPic;
@@ -171,6 +191,7 @@ $("#changeLayout").on("click",function(){
 	);
 });
 
+//
 $("#sentencesQNav").on("click",function(){
 	$("#modMenu").css("display","none");
 	$("#sentenceQForm").css("display","block");
