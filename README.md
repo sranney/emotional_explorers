@@ -1,5 +1,7 @@
 # Emotional Explorers
 
+Was at https://github.com/chairmanmeow13/Project-2-Group-6, but changed it to have a more appropriate name for the repo
+
 Visit https://emotionalexplorers.herokuapp.com to check out the site!
 
 Site for teaching children with autism how to understand emotions.
